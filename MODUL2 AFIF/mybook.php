@@ -18,6 +18,30 @@ $car = [
         "img" => "https://imgcdn.oto.com/large/gallery/color/14/1734/honda-cr-v-color-287484.jpg"
     ],
 ];
+
+$event = $_POST["event"]." ".$_POST["day"];
+$time = date("d-m-Y H:i", strtotime($event));
+$lastime = date("d-m-Y H:i", strtotime($event)+24*60*60*$_POST["day"]);
+$mobil = $_POST["mobil"];
+$phone = $_POST["phone"];
+
+$price = 0; 
+if (isset($_POST["harga"])){
+    foreach ($_POST["harga"] as $pr ){
+        if ($pr == "Health Protokol"){
+            $price += 25000;
+        }
+        if ($pr == "Driver"){
+            $price += 100000;
+        }
+        if ($pr == "Fuel Filled"){
+            $price += 350000;
+        }
+    }
+}
+else{
+    $price += 0;
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,12 +93,12 @@ $car = [
                 </thead>
                 <tbody class="bg-light">
                     <tr>
-                        <td><?php echo "1202204067";?></td>
+                        <td><?php echo "1202200320";?></td>
                         <td><?php echo $credit; ?></td>
-                        <td><?php echo $event;?></td>
-                        <td><?php echo $time;?></td>
-                        <td><?php echo $mobil;?></td>
-                        <td><?php echo $pone;?></td>
+                        <td><?php echo $event; ?></td>
+                        <td><?php echo $time; ?></td>
+                        <td><?php echo $mobil; ?></td>
+                        <td><?php echo $phone; ?></td>
                         <td>
                             <?php
                                 if (isset($_POST["harga"])){

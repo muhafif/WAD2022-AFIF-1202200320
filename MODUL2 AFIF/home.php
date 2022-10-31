@@ -72,7 +72,7 @@ $car = [
                         <hr class="m-0"><p class="m-2" style="text-align: center; color: green;">Manual</p>
                         <hr class="m-0">
                         <div class="text-center bg-light">
-                            <button class="m-2 btn btn-primary" type="submit"><a href="booking.php?img=<?= $car[0]["img"];?>&car=<?= $car[0]["car"];?>" style="color: white; text-decoration: none;">Book Now</a></button>
+                            <button class="m-2 btn btn-primary" type="submit"><a href="book.php?img=<?= $car[0]["img"];?>&car=<?= $car[0]["car"];?>" style="color: white; text-decoration: none;">Book Now</a></button>
                         </div>
                     </div>
                 </div>
@@ -88,25 +88,23 @@ $car = [
                         <hr class="m-0"><p class="m-2" style="text-align: center; color: green;">Matic</p>
                         <hr class="m-0">
                         <div class="text-center bg-light">
-                            <button class="m-2 btn btn-primary" type="submit"><a href="booking.php?img=<?= $car[1]["img"];?>&car=<?= $car[1]["car"];?>" style="color: white; text-decoration: none;">Book Now</a></button>
+                            <button class="m-2 btn btn-primary" type="submit"><a href="book.php?img=<?= $car[1]["img"];?>&car=<?= $car[1]["car"];?>" style="color: white; text-decoration: none;">Book Now</a></button>
                         </div>
                     </div>
                 </div>
-                <div class="col-3 m-1">
+                <div class="col-3 m-1 ms-2 me-2">
                     <div class="card shadow-sm rounded" >
                         <img src="<?php echo $car[2]["img"];?>" alt="">
                         <div class="m-3">
                         <p class="m-0" style="font-size: 20px"><?php echo $car[2]["car"];?></p>
                             <p class="m-0" style="color: grey">$<?php echo $car[2]["cost"];?> / hari</p>
                         </div>
-                        <hr class="m-0"><p class="m-2" style="text-align: center; color: red;">5 Kursi</p>
-                        <hr class="m-0"><p class="m-2" style="text-align: center; color: red;">Hitam</p>
-                        <hr class="m-0"><p class="m-2" style="text-align: center; color: red;">Matic</p>
+                        <hr class="m-0"><p class="m-2" style="text-align: center; color: green;">5 Kursi</p>
+                        <hr class="m-0"><p class="m-2" style="text-align: center; color: green;">Hitam</p>
+                        <hr class="m-0"><p class="m-2" style="text-align: center; color: green;">Matic</p>
                         <hr class="m-0">
                         <div class="text-center bg-light">
-                          <div class="card-body text-center" style="background-color:rgb(238, 238, 238);">
-                            <button class="m-2 btn btn-primary" type="submit"><a href="booking.php?img=<?= $car[2]["img"];?>&car=<?= $car[2]["car"];?>" style="color: white; text-decoration: none;">Book Now</a></button>
-                          </div>
+                            <button class="m-2 btn btn-primary" type="submit"><a href="book.php?img=<?= $car[2]["img"];?>&car=<?= $car[2]["car"];?>" style="color: white; text-decoration: none;">Book Now</a></button>
                         </div>
                     </div>
                 </div>
