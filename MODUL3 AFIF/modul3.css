@@ -1,0 +1,103 @@
+.home{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 120px;
+    gap: 20px;
+    
+    position: absolute;
+    width: 1440px;
+    height: 655px;
+    left: 0px;
+    top: 184px;
+    
+    background: #ffffff;
+    }
+
+.c1{
+    position: absolute;
+    left: 120px;
+    top: 262px;    
+    width: 400px;
+    height: 400px;
+    background: #FFFFFF;
+    /* Card */
+    
+    box-shadow: 6px 14px 40px rgba(210, 210, 210, 0.6);
+    border-radius: 16px;
+}
+
+.c2{
+    position: absolute;
+    left: 605px;
+    top: 262px;    
+    width: 400px;
+    height: 400px;
+    background: #FFFFFF;
+    /* Card */
+    
+    box-shadow: 6px 14px 40px rgba(210, 210, 210, 0.6);
+    border-radius: 16px;
+}
+
+.c3{
+    position: absolute;
+    left: 120px;
+    top: 712px; 
+    width: 400px;
+    height: 400px;       
+    background: #FFFFFF;
+    /* Card */
+    
+    box-shadow: 6px 14px 40px rgba(210, 210, 210, 0.6);
+    border-radius: 16px;
+}
+
+.jmlm{
+    position: absolute;
+    width: 137px;
+    height: 19px;
+    left: 120px;
+    top: 1172px;
+    
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+    
+    letter-spacing: 1.2px;
+    text-transform: capitalize;
+    
+    color: #757575;
+    padding-bottom: 20px;    
+}
+
+.bmw{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 120px;
+    top: 262px;
+    
+    background: url(.jpg), #D9D9D9;
+    border-radius: 8px;    
+}
+
+.formdetail{
+    position: absolute;
+    left: 697px;
+    top: 262px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 1.2px;
+    text-transform: capitalize;
+    
+    color: #000000;    
+}
