@@ -1,88 +1,85 @@
 <?php
-require '../config/connect.php';
-
-$query = "SELECT * FROM showroom_afif";
-$result = mysqli_query($connect, $query);
-
-if (isset($_GET['pesan'])) {
-  if ($_GET['pesan'] == 'succes') {
-    echo "<script>alert('Berhasil ditambahkan ke database ')</script>";
-  } else if ($_GET['pesan'] == 'update') {
-    echo "<script>alert('Data berhasil diupdate')</script>";
-  } else if ($_GET['pesan'] == 'delete') {
-    echo "<script>alert('Data berhasil dihapus')</script>";
-  }
-}
+include('../config/koneksi.php');
 ?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List Car | afif_1202200320</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  <style>
-    <?php include '../asset/style/modul3.css'; ?>
-  </style>
-</head>
-
-<body>
-  <!-- Nav -->
-  <nav class="navbar navbar-expand-lg bg-warning">
-    <div class="container">
-      <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
-        <div class="navbar-nav gap-3">
-          <a class="nav-link" href="../index.php">Home</a>
-          <a class="nav-link" style="color: white;" href="#">My Car</a>
-        </div>
-        <a href="Add-Donna.php" style="background-color: white; color:orange; border-radius: 5px; text-decoration: none; width: 150px; height: 35px; display:flex; justify-content:center; align-items:center; font-weight:500;">Tambah Mobil</a>
-      </div>
-    </div>
-  </nav>
-  <!-- Nav End -->
-
-  <!-- Content -->
-  <section id="list">
-    <div class="container">
-      <div>
-        <h1>My Show Room</h1>
-        <p>List Mobil Show Room Apipunk</p>
-        <div class="d-flex gap-5">
-          <?php
-          if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-              echo "<div class='card cardcontent' style='width: 18rem;'>
-            <img src='../asset/images/" . $row["foto_mobil"] . "' class='card-img-top' alt='fotomobil' style='padding: 16px;'>
-            <div class='card-body'>
-              <h5 class='card-title'>" . $row["nama_mobil"] . "</h5>
-              <p class='card-text'>" . substr($row["deskripsi"], 0, 50) . '...' . "</p>
-              <span class='d-flex'>
-                <a href='Detail-Donna.php?id=" . $row["id_mobil"] . "' class='btn btn-warning' style='border-radius: 100px; width:140px; height: 36px;'>Detail</a>
-                <a href='../config/delete.php?id=" . $row["id_mobil"] . "' class='btn btn-danger' style='border-radius: 100px; width:140px; height: 36px; margin-left:20px;'>Delete</a>
-              </span>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EAD Rental</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <style>
+        .toast {
+            position: absolute;
+            bottom: 3rem;
+            right: 3rem;
+        }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-primary  navbar-expand-lg sticky-top" style="background-color: #e9ecef;">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homeapipunk.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="../pages/myitem.php">Mycar</a>
+                        </li>
+                    </ul>
+                    <a href="../pages/additem.php" class="btn btn-light bg-white">Add Car</a>
+                </div>
             </div>
-          </div>";
-            }
-          } else {
-            echo "0 results";
-          }
-          ?>
+        </nav>
+        <div class="container py-5">
+            <h1>My Show Room</h1>
+            <p>List Showroom Apipunk</p>
+            <div class="row mb-5">
+                <?php 
+                $sql = "SELECT * FROM showroom_afif_table";
+                $query = mysqli_query($db, $sql);
+                $count_row = mysqli_num_rows($query);
+        
+                while($item = mysqli_fetch_array($query)){
+                ?>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="../asset/gambar/<?=$item['foto_mobil']?>" class="img-thumbnail">
+                            <h4 class="mt-3"><?=$item['merk_mobil'].' '.$item['nama_mobil']?></h4>
+                            <div class="mb-4"><?=$item['deskripsi']?></div>
+                            <a href="../pages/itemdetail.php?id=<?=$item['id_mobil']?>" class="btn btn-primary px-5 rounded-pill">Detail</a>
+                            <a href="../config/deleteapipunk.php?id=<?=$item['id_mobil']?>" class="btn btn-danger px-5 rounded-pill">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <?php }?>
+            </div>
+            <p class="fw-bold">Jumlah Mobil: <?=$count_row?></p>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- Content End -->
 
-  <!-- footer -->
-  <footer class="fixed-bottom" style="padding-bottom: 50px;">
-    <div class="container">
-      <p style="font-family: 'Raleway'; font-style: normal; font-weight: 700; font-size: 16px; line-height: 19px; color: #757575;">Jumlah Mobil : <?php echo mysqli_num_rows($result) ?></p>
-    </div>
-  </footer>
-  <!-- footer end -->
-  <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-</body>
+        <?php
+        session_start();
+        if (!empty($_SESSION['msg'])) {
+        ?>
+        <div class="toast show align-items-center text-bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                Data berhasil ditambahkan.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+        <?php
+        unset($_SESSION['msg']);
+        }
+        ?>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </body>
 </html>

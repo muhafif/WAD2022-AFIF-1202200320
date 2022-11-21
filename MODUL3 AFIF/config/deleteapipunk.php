@@ -1,12 +1,20 @@
 <?php
-require './connect.php';
 
-$id = $_GET['id'];
+include("koneksi.php");
 
-$sql = "DELETE FROM showroom_afif WHERE id_mobil = $id";
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "DELETE FROM showroom_nahid WHERE id_mobil=$id";
+    $query = mysqli_query($db, $sql);
 
-if (mysqli_query($koneksi, $sql)) {
-  header("location: ../pages/myitem.php?pesan=delete");
-} else {
-  echo "Gagal";
+    if ($update) {
+        echo "<script>alert('Data telah ditambahkan')</script>";
+        echo "<meta http-equiv='refresh' content='1 url=../pages/ListCarmobil.php'>";
+        // header('Location: ../ListCarmobil.php?status=sukses');
+        } else {
+        echo "<script>alert('Data gagal ditambahkan')</script>";
+        header('Location: ../pages/ListCarmobil.php?status=gagal');
+        }
+    
 }
+?>
