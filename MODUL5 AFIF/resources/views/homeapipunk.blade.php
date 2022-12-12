@@ -32,7 +32,11 @@
                             <a class="nav-link" href="list.php">Mycar</a>
                         </li>
                     </ul>
-                    <a href="login.php" class="btn btn-light bg-white">Login</a>
+                    
+                    <a href="/login" class="btn btn-light bg-white">Login</a>
+                    @auth
+                    <a href="{{route('login')}}" class="btn btn-light bg-white">Logout</a>
+                    @endauth
                 </div>
             </div>
         </nav>

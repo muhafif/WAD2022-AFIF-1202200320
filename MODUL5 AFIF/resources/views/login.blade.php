@@ -40,7 +40,8 @@
                 </div>
                 <div class="col-sm">
                     <h1 class="fw-bold">Login</h1>
-                    <form action="../config/log.php" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('login.action') }}" method="POST">
+                        @csrf
 
                     <div class="mb-3">
                         <label for="email" class="form-label fw-bold">Email</label>
@@ -64,7 +65,7 @@
                     </div>
 
                     <p>Anda belum punya akun? 
-                        <a href="register.php">Daftar</a>
+                        <a href="{{route('register')}}">Daftar</a>
                     </p>
                 </div>
             
